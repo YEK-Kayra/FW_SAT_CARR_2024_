@@ -1,0 +1,4 @@
+../Core/Src/SubSys_WirelessCommunication_Setting_Driver.c:19:6:SubSys_WirelessCom_Config_Init	1
+../Core/Src/SubSys_WirelessCommunication_Setting_Driver.c:61:6:SubSys_WirelessCom_Config_SET_REG	1
+../Core/Src/SubSys_WirelessCommunication_Setting_Driver.c:84:6:SubSys_WirelessCom_Config_READ_REG	3
+../Core/Src/SubSys_WirelessCommunication_Setting_Driver.c:119:6:SubSys_WirelessCom_Config_WORK_MODE	5

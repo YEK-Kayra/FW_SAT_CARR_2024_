@@ -1,0 +1,2 @@
+../Core/Src/SubSys_Sensor_Battery_Driver.c:9:7:MeasBattery_Init	1
+../Core/Src/SubSys_Sensor_Battery_Driver.c:25:7:ReadBatteryVoltage	2
