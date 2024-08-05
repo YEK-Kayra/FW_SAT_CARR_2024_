@@ -34,6 +34,7 @@
   *		##Clean Code explanation
   *		"The __CLOSED expression can be written at the end of the header guard.
   *		 If you remove this part, the related code will work and complied
+  *
   ******************************************************************************
   */
 
