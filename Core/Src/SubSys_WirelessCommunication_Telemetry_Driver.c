@@ -37,16 +37,19 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 		SubSys_WirelessCom_Telemetry_Create_Packet_For(Sat_Carrier, dev_WirelessComApp);
 
 				/* 8 pairs of '<>' and y Byte data are x Byte as total budget*/
+//				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
+//																		"<%.2f><%.2f><%.1f><%.1f><%.2f><%.4f><%.4f><%.1f>\n",
+//																															dev_WirelessComApp->Variable.Carr_Pressure,
+//																															dev_WirelessComApp->Variable.Carr_Temperature,
+//																															dev_WirelessComApp->Variable.Carr_VertHeight,
+//																															dev_WirelessComApp->Variable.Carr_VertSpeed,
+//																															dev_WirelessComApp->Variable.Carr_BatteryVoltage,
+//																															dev_WirelessComApp->Variable.Carr_GPS_Latitude,
+//																															dev_WirelessComApp->Variable.Carr_GPS_Longitude,
+//																															dev_WirelessComApp->Variable.Carr_GPS_Altitude);
 				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
-																		"<%.2f><%.2f><%.1f><%.1f><%.2f><%.4f><%.4f><%.1f>\n",
-																															dev_WirelessComApp->Variable.Carr_Pressure,
-																															dev_WirelessComApp->Variable.Carr_Temperature,
-																															dev_WirelessComApp->Variable.Carr_VertHeight,
-																															dev_WirelessComApp->Variable.Carr_VertSpeed,
-																															dev_WirelessComApp->Variable.Carr_BatteryVoltage,
-																															dev_WirelessComApp->Variable.Carr_GPS_Latitude,
-																															dev_WirelessComApp->Variable.Carr_GPS_Longitude,
-																															dev_WirelessComApp->Variable.Carr_GPS_Altitude);
+																		"<%.2f>\n",
+																				   dev_WirelessComApp->Variable.Carr_Pressure);
 
 				for(int i = 0 ; i < Written_Bytes ; i++){
 
