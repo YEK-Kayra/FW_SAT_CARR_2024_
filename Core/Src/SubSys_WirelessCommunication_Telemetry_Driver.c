@@ -48,8 +48,9 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 //																															dev_WirelessComApp->Variable.Carr_GPS_Longitude,
 //																															dev_WirelessComApp->Variable.Carr_GPS_Altitude);
 				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
-																		"<%.2f>\n",
-																				   dev_WirelessComApp->Variable.Carr_Pressure);
+																		"<%.2f><%.2f>\n",
+																				   dev_WirelessComApp->Variable.Carr_Pressure,
+																				   dev_WirelessComApp->Variable.Carr_VertHeight);
 
 				for(int i = 0 ; i < Written_Bytes ; i++){
 
