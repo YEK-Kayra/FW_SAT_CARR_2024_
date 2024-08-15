@@ -8,6 +8,7 @@
          				#### WIRELESSCOM VARIABLES ####
 ******************************************************************************/
 uint16_t Written_Bytes; /* is for save number of total converted buffer's characters*/
+uint8_t cnt;
 
 /******************************************************************************
          				#### WIRELESSCOM  FUNCTIONS ####
@@ -48,20 +49,24 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 //																															dev_WirelessComApp->Variable.Carr_GPS_Longitude,
 //																															dev_WirelessComApp->Variable.Carr_GPS_Altitude);
 				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
-																		"<%.2f><%.2f>\n",
+																		"C<%.2f><%.2f>\n",
 																				   dev_WirelessComApp->Variable.Carr_Pressure,
 																				   dev_WirelessComApp->Variable.Carr_VertHeight);
 
-				for(int i = 0 ; i < Written_Bytes ; i++){
+				for(cnt = 0 ; cnt < Written_Bytes ; cnt++){
 
-					dev_WirelessComApp->Buffer.Tx[i+3] = dev_WirelessComApp->Buffer.Temp[i];
+					dev_WirelessComApp->Buffer.Tx[cnt+3] = dev_WirelessComApp->Buffer.Temp[cnt]; /*End of the array has \n character*/
 
 				}
 
+				for(uint8_t j=(cnt+3) ; j < SizeOf_Wireless_TX_Buff_Carrier ; j++){
 
+					dev_WirelessComApp->Buffer.Tx[j] = '*';
 
+				}
 
-				HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , (Written_Bytes+3), 1000);
+				//HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , (Written_Bytes+3), 1000);
+				HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , SizeOf_Wireless_TX_Buff_Carrier, 1000);
 	}
 
 }

@@ -151,7 +151,7 @@ DMA_HandleTypeDef hdma_usart1_tx;
 	 * (The code block has been commented out within the while loop)
 	 */
 	uint8_t TelemetryData[100]={0};
-	uint8_t WrittenBytes;
+	uint8_t WrittenBytesTTL;
 
 /* USER CODE END PV */
 
@@ -215,7 +215,7 @@ int main(void)
 
 
 /******>>> SENSOR BATTERY INIT BEGIN >>>******/
-	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SENSOR_BATTERY_H
+	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SENSOR_BATTERY_H__CLOSED
 	NumSerialBat = 1;	/*! Number of serial connection battery */
 	MeasBattery_Init(NumSerialBat);
 	#endif
@@ -233,7 +233,7 @@ int main(void)
 
 
 /******>>> ALERT CONTROL INITIALIZATION BEGIN >>>******/
-	#ifdef SAT_CARRIER_SUBSYS_DRIVER_ALERTCONTROL_H
+	#ifdef SAT_CARRIER_SUBSYS_DRIVER_ALERTCONTROL_H__CLOSED
 	/**!
 	 * @Attention!
 	 *
@@ -253,7 +253,7 @@ int main(void)
 
 
 /******>>> SD CARD INITIALIZATION BEGIN >>>******/
-	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SDCARD_H
+	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SDCARD_H__CLOSED
 	/*! We create a buffer that contains the satellite's carrier variables, and we fill it with variables from SD_Data objects */
 	extern char SdDatasBuf[LineSize];
 
@@ -275,7 +275,7 @@ int main(void)
 
 
 /******>>> SENSOR GPS INITIALIZATION BEGIN >>>******/
-	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SENSOR_GPS_H
+	#ifdef SAT_CARRIER_SUBSYS_DRIVERS_SENSOR_GPS_H__CLOSED
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
 	GPS_Init();
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
@@ -331,7 +331,7 @@ int main(void)
 	   SystemTick = HAL_GetTick();
 
 	   /*! It reads the battery voltage and stores it */
-	   ReadBatteryVoltage(&hadc1);
+	   //ReadBatteryVoltage(&hadc1);
 
 	  /*! It reads the TPGVH data and saves it into the variables created in the system
 	   * (T) = Temperature
@@ -343,10 +343,10 @@ int main(void)
 	   MS5611_Read_ActVal(&MS5611);
 
 	   /*! The collected data is stored into variables that created for the SD card */
-	   SD_FillVariables();
+	   //SD_FillVariables();
 
 	   /*! The recorded variables are written to the SD card */
-	   SD_Write(SdDatasBuf,"SAT_CAR/STM32.TXT");
+	   //SD_Write(SdDatasBuf,"SAT_CAR/STM32.TXT");
 
 	   /*! This block is used to send the collected data to the Station PC using USB-TTL */
 //
