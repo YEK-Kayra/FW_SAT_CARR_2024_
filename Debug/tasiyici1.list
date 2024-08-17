@@ -3320,7 +3320,7 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
  8001fdc:	683b      	ldr	r3, [r7, #0]
  8001fde:	f103 061e 	add.w	r6, r3, #30
-																		"C<%.2f><%.2f>\n",
+																		"C<%.2f><%.2f>",
 																				   dev_WirelessComApp->Variable.Carr_Pressure,
  8001fe2:	683b      	ldr	r3, [r7, #0]
  8001fe4:	6bdb      	ldr	r3, [r3, #60]	@ 0x3c
@@ -3621,17 +3621,17 @@ int main(void)
  8002190:	f7ff feb6 	bl	8001f00 <SubSys_WirelessCom_Config_WORK_MODE>
 
 	 /*! Will be filled for the PAYLOAD(Target) Device */
-	 dev_WirelessComApp.Target_ADDH = 0x20;
+	 dev_WirelessComApp.Target_ADDH = 0x14;
  8002194:	4b16      	ldr	r3, [pc, #88]	@ (80021f0 <main+0xb8>)
- 8002196:	2220      	movs	r2, #32
+ 8002196:	2214      	movs	r2, #20
  8002198:	f883 206c 	strb.w	r2, [r3, #108]	@ 0x6c
-	 dev_WirelessComApp.Target_ADDL = 0x23;
+	 dev_WirelessComApp.Target_ADDL = 0x53;
  800219c:	4b14      	ldr	r3, [pc, #80]	@ (80021f0 <main+0xb8>)
- 800219e:	2223      	movs	r2, #35	@ 0x23
+ 800219e:	2253      	movs	r2, #83	@ 0x53
  80021a0:	f883 206d 	strb.w	r2, [r3, #109]	@ 0x6d
-	 dev_WirelessComApp.Target_Ch   = 0x10;
+	 dev_WirelessComApp.Target_Ch   = 0x05;
  80021a4:	4b12      	ldr	r3, [pc, #72]	@ (80021f0 <main+0xb8>)
- 80021a6:	2210      	movs	r2, #16
+ 80021a6:	2205      	movs	r2, #5
  80021a8:	f883 206e 	strb.w	r2, [r3, #110]	@ 0x6e
   /* USER CODE BEGIN WHILE */
   while (1)

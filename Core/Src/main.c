@@ -313,9 +313,9 @@ int main(void)
 	 SubSys_WirelessCom_Config_WORK_MODE(&dev_WirelessComConfig);
 
 	 /*! Will be filled for the PAYLOAD(Target) Device */
-	 dev_WirelessComApp.Target_ADDH = 0x20;
-	 dev_WirelessComApp.Target_ADDL = 0x23;
-	 dev_WirelessComApp.Target_Ch   = 0x10;
+	 dev_WirelessComApp.Target_ADDH = 0x14;
+	 dev_WirelessComApp.Target_ADDL = 0x53;
+	 dev_WirelessComApp.Target_Ch   = 0x05;
 
 	 #endif
 /******<<< WIRELESS COMMUNICATION SETTING & TELEMETRY INITIALIZATION END <<<******/
