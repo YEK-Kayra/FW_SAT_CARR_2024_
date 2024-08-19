@@ -66,7 +66,7 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 				}
 
 				//HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , (Written_Bytes+3), 1000);
-				HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , SizeOf_Wireless_TX_Buff_Carrier, 1000);
+				HAL_UART_Transmit(dev_WirelessComApp->huartX, (uint8_t *)dev_WirelessComApp->Buffer.Tx , SizeOf_Wireless_TX_Buff_Carrier, 1000);
 	}
 
 }
