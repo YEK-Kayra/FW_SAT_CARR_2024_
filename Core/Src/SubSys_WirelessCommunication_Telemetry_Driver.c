@@ -37,35 +37,32 @@ void SubSys_WirelessCom_Telemetry_Transfer_From_To(MissionUnit From_X, MissionUn
 		/*! Create message packet for Carrier for sending to the Payload*/
 		SubSys_WirelessCom_Telemetry_Create_Packet_For(Sat_Carrier, dev_WirelessComApp);
 
-				/* 8 pairs of '<>' and y Byte data are x Byte as total budget*/
-//				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
-//																		"<%.2f><%.2f><%.1f><%.1f><%.2f><%.4f><%.4f><%.1f>\n",
-//																															dev_WirelessComApp->Variable.Carr_Pressure,
-//																															dev_WirelessComApp->Variable.Carr_Temperature,
-//																															dev_WirelessComApp->Variable.Carr_VertHeight,
-//																															dev_WirelessComApp->Variable.Carr_VertSpeed,
-//																															dev_WirelessComApp->Variable.Carr_BatteryVoltage,
-//																															dev_WirelessComApp->Variable.Carr_GPS_Latitude,
-//																															dev_WirelessComApp->Variable.Carr_GPS_Longitude,
-//																															dev_WirelessComApp->Variable.Carr_GPS_Altitude);
+
+				/*! Write collected datas into the Temporary buffer(Buffer.Temp) as character */
 				Written_Bytes = sprintf(dev_WirelessComApp->Buffer.Temp,
 																		"C<%.2f><%.2f>",
 																				   dev_WirelessComApp->Variable.Carr_Pressure,
 																				   dev_WirelessComApp->Variable.Carr_VertHeight);
 
+
+				/*! Fill Carrier press and vertHeight datas into the Tx buffer(uint8_t)*/
 				for(cnt = 0 ; cnt < Written_Bytes ; cnt++){
 
 					dev_WirelessComApp->Buffer.Tx[cnt+3] = dev_WirelessComApp->Buffer.Temp[cnt]; /*End of the array has \n character*/
 
 				}
 
+
+				/*! Fill gaps with  character '*' , So we create a 30bytes buffer */
 				for(uint8_t j=(cnt+3) ; j < SizeOf_Wireless_TX_Buff_Carrier ; j++){
 
 					dev_WirelessComApp->Buffer.Tx[j] = '*';
 
 				}
 
-				//HAL_UART_Transmit(dev_WirelessComApp->huartX, dev_WirelessComApp->Buffer.Tx , (Written_Bytes+3), 1000);
+				/*! Transmit all Tx buffer(uint8_t) to the Payload of Satellite
+				 * Total Size 30byte
+				 */
 				HAL_UART_Transmit(dev_WirelessComApp->huartX, (uint8_t *)dev_WirelessComApp->Buffer.Tx , SizeOf_Wireless_TX_Buff_Carrier, 1000);
 	}
 
